@@ -5,13 +5,12 @@ import { ChevronRight } from "lucide-react";
 
 export default function Registration() {
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: "#060606" }}>
+    <section className="relative py-24 overflow-hidden" style={{ background: "#f8fafc" }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px)",
-          backgroundSize: "80px 80px",
+          backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.18) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
         }}
       />
 
@@ -39,7 +38,7 @@ export default function Registration() {
           </motion.div>
 
           <motion.h2
-            className="font-black text-white leading-tight mb-3"
+            className="font-black text-slate-900 leading-tight mb-3"
             style={{ fontSize: "clamp(32px, 4vw, 52px)", letterSpacing: "-0.025em" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,10 +62,9 @@ export default function Registration() {
           transition={{ duration: 0.45 }}
           className="rounded-3xl overflow-hidden"
           style={{
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            backdropFilter: "blur(16px)",
-            boxShadow: "0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)",
+            background: "#ffffff",
+            border: "1px solid rgba(226,232,240,1)",
+            boxShadow: "0 8px 24px rgba(15,23,42,0.08)",
           }}
         >
           <div className="grid lg:grid-cols-2">
@@ -106,7 +104,7 @@ export default function Registration() {
             </div>
           </div>
 
-          <div className="p-8 lg:p-10" style={{ background: "rgba(255,255,255,0.02)" }}>
+          <div className="p-8 lg:p-10" style={{ background: "#f8fafc" }}>
             <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
               <div className="mx-auto w-44 h-44 rounded-full p-1.5" style={{ border: "4px solid #dc2626" }}>
                 <div className="w-full h-full rounded-full overflow-hidden border-4" style={{ borderColor: "#d4af37" }}>
