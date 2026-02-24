@@ -12,6 +12,7 @@ const courses = [
     duration: "3 Years",
     intake: "120 Seats",
     mode: "Full Time",
+    image: "/tech2.jpg",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
@@ -27,6 +28,7 @@ const courses = [
     duration: "2 Years",
     intake: "60 Seats",
     mode: "Full Time",
+    image: "/tech3.jpg",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
@@ -42,6 +44,7 @@ const courses = [
     duration: "3 Years",
     intake: "80 Seats",
     mode: "Full Time",
+    image: "/tech5.jpg",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
@@ -57,6 +60,7 @@ const courses = [
     duration: "6–12 Months",
     intake: "Open",
     mode: "Online",
+    image: "/tech6.jpg",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -73,21 +77,58 @@ export default function CoursesSection() {
     <section ref={ref} className="relative py-24 overflow-hidden"
       style={{ background: "#0a0a0a" }}>
 
-      {/* Subtle grid lines */}
-      <div className="absolute inset-0 pointer-events-none"
+      {/* Animated grid lines */}
+      <motion.div className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
-        }} />
+        }}
+        animate={{ backgroundPosition: ["0px 0px", "80px 80px"] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
 
-      {/* Red glow top-left */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(220,38,38,0.12) 0%, transparent 70%)", filter: "blur(40px)" }} />
+      {/* Floating particles */}
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 rounded-full bg-red-500/20"
+          style={{
+            left: `${20 + i * 15}%`,
+            top: `${30 + i * 10}%`,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            opacity: [0.2, 0.5, 0.2],
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            duration: 3 + i,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.5,
+          }}
+        />
+      ))}
 
-      {/* Red glow bottom-right */}
+      {/* Animated red glow top-left */}
+      <motion.div className="absolute -top-40 -left-40 w-96 h-96 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(220,38,38,0.12) 0%, transparent 70%)", filter: "blur(40px)" }}
+        animate={{ x: [0, 50, 0], y: [0, 30, 0], scale: [1, 1.2, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+
+      {/* Animated red glow bottom-right */}
       <motion.div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(220,38,38,0.08) 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
+        animate={{ x: [0, -40, 0], y: [0, -30, 0], scale: [1, 1.15, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} />
+
+      {/* Rotating circles */}
+      <motion.div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full border border-red-500/10 pointer-events-none"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }} />
+      
+      <motion.div className="absolute bottom-1/4 left-1/4 w-48 h-48 rounded-full border border-red-500/10 pointer-events-none"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
 
       <div className="relative w-full  px-32">
 
@@ -147,10 +188,18 @@ export default function CoursesSection() {
                 </span>
               </div>
 
-              {/* ── Col 2: Icon ── */}
-              <div className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-red-500 transition-all duration-300 group-hover:bg-red-600 group-hover:text-white"
-                style={{ background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.2)" }}>
-                {course.icon}
+              {/* ── Col 2: Image + Icon ── */}
+              <div className="relative flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src={course.image} 
+                  alt={course.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/80 to-red-900/80 flex items-center justify-center">
+                  <div className="text-white">
+                    {course.icon}
+                  </div>
+                </div>
               </div>
 
               {/* ── Col 3: Title + desc ── */}

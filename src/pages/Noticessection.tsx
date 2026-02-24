@@ -98,7 +98,7 @@ export default function NoticesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative  py-28 overflow-hidden"
+      className="relative  py-10 overflow-hidden"
       style={{ background: "#f9f9f9" }}
     >
       {/* BG blobs */}

@@ -46,7 +46,7 @@ export default function LogoMarquee({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden py-24"
+      className="relative w-full overflow-hidden py-10"
       style={{ background: "#fff" }}
     >
       {/* Subtle dot grid */}
