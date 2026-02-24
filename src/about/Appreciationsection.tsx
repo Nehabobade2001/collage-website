@@ -128,13 +128,13 @@ export default function AppreciationSection() {
   const visible = appreciations.slice(page * perPage, page * perPage + perPage);
 
   return (
-    <section ref={ref} className="relative py-24 overflow-hidden" style={{ background: "#060606" }}>
+    <section ref={ref} className="relative py-24 overflow-hidden" style={{ background: "#f8fafc" }}>
 
       {/* BG grid */}
       <div className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px)",
-          backgroundSize: "80px 80px",
+          backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.18) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
         }} />
 
       {/* Glows */}
@@ -144,7 +144,7 @@ export default function AppreciationSection() {
         style={{ background: "radial-gradient(circle,rgba(220,38,38,0.06) 0%,transparent 70%)" }}
         animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
 
-      <div className="relative w-full px-6 lg:px-20">
+      <div className="relative  w-full px-20 md:px-32 lg:px-32">
 
         {/* ── HEADER ── */}
         <div className="text-center mb-16">
@@ -157,16 +157,16 @@ export default function AppreciationSection() {
               initial={{ width: 0 }} animate={inView ? { width: 32 } : {}} transition={{ duration: 0.5, delay: 0.1 }} />
           </motion.div>
 
-          <motion.h2 className="font-black text-white leading-tight mb-3"
-            style={{ fontSize: "clamp(28px, 4vw, 48px)", letterSpacing: "-0.025em" }}
-            initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          <motion.h2 className="font-black text-slate-900 leading-tight mb-3"
+   
+            style={{ fontSize: "clamp(30px, 4vw, 52px)" }}            initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.15 }}>
             Appreciation &{" "}
             <span style={{ color: "#ef4444" }}>Recognition</span>
           </motion.h2>
 
           <motion.p className="text-sm max-w-xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.3)" }}
+            style={{ color: "#64748b" }}
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.28 }}>
             Acknowledged by honourable Members of Parliament and Chief Ministers across India for our contribution to quality education.
@@ -189,12 +189,12 @@ export default function AppreciationSection() {
           ].map((s, i) => (
             <div key={i} className="flex items-center gap-2.5 px-5 py-2.5 rounded-full"
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                background: "#ffffff",
+                border: "1px solid rgba(226,232,240,1)",
               }}>
               <span className="text-red-400">{s.icon}</span>
-              <span className="font-black text-white text-sm">{s.value}</span>
-              <span className="text-[10px] uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>{s.label}</span>
+              <span className="font-black text-slate-900 text-sm">{s.value}</span>
+              <span className="text-[10px] uppercase tracking-widest" style={{ color: "#64748b" }}>{s.label}</span>
             </div>
           ))}
         </motion.div>
@@ -213,10 +213,10 @@ export default function AppreciationSection() {
                 onClick={() => setSelected(person)}
                 className="group relative rounded-3xl overflow-hidden cursor-pointer min-h-[360px] lg:min-h-[390px]"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.07)",
+                  background: "#ffffff",
+                  border: "1px solid rgba(226,232,240,1)",
                   backdropFilter: "blur(16px)",
-                  boxShadow: "0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)",
+                  boxShadow: "0 8px 24px rgba(15,23,42,0.08)",
                 }}>
 
                 {/* Hover glow */}
@@ -233,7 +233,7 @@ export default function AppreciationSection() {
                     {/* Avatar */}
                     <div className="w-16 h-16 rounded-2xl flex items-center justify-center font-black text-white text-xl flex-shrink-0"
                       style={{
-                        background: `linear-gradient(135deg,${person.color},#0a0a0a)`,
+                        background: `linear-gradient(135deg,${person.color},#ef4444)`,
                         border: `1px solid ${person.color}44`,
                         boxShadow: `0 4px 16px ${person.color}30`,
                       }}>
@@ -242,13 +242,13 @@ export default function AppreciationSection() {
 
                     {/* Emblem placeholder */}
                     <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                      <Award size={16} style={{ color: "rgba(255,255,255,0.2)" }} />
+                      style={{ background: "#f8fafc", border: "1px solid rgba(226,232,240,1)" }}>
+                      <Award size={16} style={{ color: "#94a3b8" }} />
                     </div>
                   </div>
 
                   {/* Name + role */}
-                  <h3 className="font-black text-white text-[18px] leading-tight mb-1 group-hover:text-red-400 transition-colors duration-200">
+                  <h3 className="font-black text-slate-900 text-[18px] leading-tight mb-1 group-hover:text-red-600 transition-colors duration-200">
                     {person.name}
                   </h3>
                   <p className="text-[10px] font-bold uppercase tracking-wider mb-0.5"
@@ -256,19 +256,19 @@ export default function AppreciationSection() {
                     {person.role}
                   </p>
                   <p className="text-[10px] uppercase tracking-widest mb-4"
-                    style={{ color: "rgba(255,255,255,0.22)" }}>
+                    style={{ color: "#64748b" }}>
                     {person.region}
                   </p>
 
                   {/* Divider */}
                   <div className="h-px mb-4"
-                    style={{ background: "rgba(255,255,255,0.05)" }} />
+                    style={{ background: "rgba(148,163,184,0.25)" }} />
 
                   {/* Message preview */}
                   <div className="relative">
                     <Quote size={14} className="text-red-600 mb-2 opacity-60" />
-                    <p className="text-[12px] leading-relaxed line-clamp-3"
-                      style={{ color: "rgba(255,255,255,0.35)" }}>
+                    <p className="text-[14px] leading-relaxed line-clamp-3"
+                      style={{ color: "#334155" }}>
                       {person.message}
                     </p>
                   </div>
@@ -276,7 +276,7 @@ export default function AppreciationSection() {
                   {/* Date + CTA */}
                   <div className="flex items-center justify-between mt-5">
                     <span className="text-[9px] uppercase tracking-widest"
-                      style={{ color: "rgba(255,255,255,0.18)" }}>
+                      style={{ color: "#64748b" }}>
                       Dt. {person.date}
                     </span>
                     <motion.div
@@ -302,9 +302,9 @@ export default function AppreciationSection() {
             disabled={page === 0}
             className="w-10 h-10 rounded-xl flex items-center justify-center transition-all"
             style={{
-              background: page === 0 ? "rgba(255,255,255,0.02)" : "rgba(220,38,38,0.1)",
-              border: `1px solid ${page === 0 ? "rgba(255,255,255,0.05)" : "rgba(220,38,38,0.25)"}`,
-              color: page === 0 ? "rgba(255,255,255,0.15)" : "#ef4444",
+              background: page === 0 ? "#f1f5f9" : "rgba(220,38,38,0.1)",
+              border: `1px solid ${page === 0 ? "rgba(203,213,225,1)" : "rgba(220,38,38,0.25)"}`,
+              color: page === 0 ? "#94a3b8" : "#ef4444",
             }}>
             <ChevronLeft size={16} />
           </motion.button>
@@ -314,7 +314,7 @@ export default function AppreciationSection() {
               onClick={() => setPage(i)}
               className="w-2.5 h-2.5 rounded-full transition-all duration-200"
               style={{
-                background: i === page ? "#ef4444" : "rgba(255,255,255,0.12)",
+                background: i === page ? "#ef4444" : "rgba(148,163,184,0.35)",
                 transform: i === page ? "scale(1.3)" : "scale(1)",
               }} />
           ))}
@@ -324,9 +324,9 @@ export default function AppreciationSection() {
             disabled={page === totalPages - 1}
             className="w-10 h-10 rounded-xl flex items-center justify-center transition-all"
             style={{
-              background: page === totalPages - 1 ? "rgba(255,255,255,0.02)" : "rgba(220,38,38,0.1)",
-              border: `1px solid ${page === totalPages - 1 ? "rgba(255,255,255,0.05)" : "rgba(220,38,38,0.25)"}`,
-              color: page === totalPages - 1 ? "rgba(255,255,255,0.15)" : "#ef4444",
+              background: page === totalPages - 1 ? "#f1f5f9" : "rgba(220,38,38,0.1)",
+              border: `1px solid ${page === totalPages - 1 ? "rgba(203,213,225,1)" : "rgba(220,38,38,0.25)"}`,
+              color: page === totalPages - 1 ? "#94a3b8" : "#ef4444",
             }}>
             <ChevronRight size={16} />
           </motion.button>
@@ -342,7 +342,7 @@ export default function AppreciationSection() {
           <>
             {/* Backdrop */}
             <motion.div className="fixed inset-0 z-50"
-              style={{ backdropFilter: "blur(12px)", background: "rgba(0,0,0,0.8)" }}
+              style={{ backdropFilter: "blur(8px)", background: "rgba(15,23,42,0.28)" }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setSelected(null)} />
 
@@ -350,10 +350,10 @@ export default function AppreciationSection() {
             <motion.div
               className="fixed inset-4 md:inset-8 lg:inset-16 z-50 overflow-y-auto rounded-3xl"
               style={{
-                background: "rgba(8,8,8,0.96)",
-                backdropFilter: "blur(32px) saturate(180%)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "0 40px 120px rgba(0,0,0,0.9), 0 0 0 1px rgba(220,38,38,0.15)",
+                background: "linear-gradient(180deg,#ffffff 0%,#f8fafc 100%)",
+                backdropFilter: "blur(18px) saturate(140%)",
+                border: "1px solid rgba(226,232,240,1)",
+                boxShadow: "0 30px 80px rgba(15,23,42,0.22), 0 0 0 1px rgba(220,38,38,0.08)",
               }}
               initial={{ opacity: 0, scale: 0.93, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -367,16 +367,16 @@ export default function AppreciationSection() {
               {/* Grid bg in modal */}
               <div className="absolute inset-0 rounded-3xl pointer-events-none overflow-hidden"
                 style={{
-                  backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px)",
-                  backgroundSize: "60px 60px",
+                  backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.14) 1px, transparent 1px)",
+                  backgroundSize: "22px 22px",
                 }} />
 
               <div className="relative p-8 md:p-12">
                 {/* Close */}
                 <button onClick={() => setSelected(null)}
-                  className="absolute top-6 right-6 w-9 h-9 rounded-xl flex items-center justify-center z-10 transition-colors hover:bg-white/10"
-                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <X size={16} style={{ color: "rgba(255,255,255,0.5)" }} />
+                  className="absolute top-6 right-6 w-9 h-9 rounded-xl flex items-center justify-center z-10 transition-colors hover:bg-slate-100"
+                  style={{ background: "#ffffff", border: "1px solid rgba(226,232,240,1)" }}>
+                  <X size={16} style={{ color: "#64748b" }} />
                 </button>
 
                 {/* Letter header — mimics official letter */}
@@ -384,7 +384,7 @@ export default function AppreciationSection() {
 
                   {/* Official header */}
                   <div className="flex items-start justify-between mb-8 pb-6"
-                    style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                    style={{ borderBottom: "1px solid rgba(203,213,225,0.6)" }}>
                     <div>
                       {/* Emblem area */}
                       <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
@@ -394,19 +394,19 @@ export default function AppreciationSection() {
                         }}>
                         <Award size={24} style={{ color: selected.color }} />
                       </div>
-                      <div className="font-black text-2xl text-white leading-tight">{selected.name}</div>
+                      <div className="font-black text-2xl text-slate-900 leading-tight">{selected.name}</div>
                       <div className="font-bold text-sm mt-1" style={{ color: "#ef4444" }}>{selected.role}</div>
-                      <div className="text-xs mt-0.5 uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.25)" }}>{selected.region}</div>
+                      <div className="text-xs mt-0.5 uppercase tracking-widest" style={{ color: "#64748b" }}>{selected.region}</div>
                     </div>
 
                     {/* Date + ref */}
                     <div className="text-right flex-shrink-0">
                       {selected.ref && (
-                        <p className="text-[10px] mb-1" style={{ color: "rgba(255,255,255,0.2)" }}>
+                        <p className="text-[10px] mb-1" style={{ color: "#64748b" }}>
                           Ref: {selected.ref}
                         </p>
                       )}
-                      <p className="text-[11px] font-bold" style={{ color: "rgba(255,255,255,0.35)" }}>
+                      <p className="text-[11px] font-bold" style={{ color: "#475569" }}>
                         Dt. {selected.date}
                       </p>
                     </div>
@@ -415,14 +415,14 @@ export default function AppreciationSection() {
                   {/* MESSAGE label */}
                   <div className="text-center mb-6">
                     <span className="text-xs font-black uppercase tracking-[0.3em]"
-                      style={{ color: "rgba(255,255,255,0.25)" }}>— Message —</span>
+                      style={{ color: "#64748b" }}>— Message —</span>
                   </div>
 
                   {/* Letter body */}
                   <div className="mb-10">
                     {selected.letterImage ? (
                       <div className="rounded-2xl overflow-hidden"
-                        style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.02)" }}>
+                        style={{ border: "1px solid rgba(226,232,240,1)", background: "#ffffff" }}>
                         <img
                           src={selected.letterImage}
                           alt={`${selected.name} letter`}
@@ -433,7 +433,7 @@ export default function AppreciationSection() {
                     ) : (
                       <div className="space-y-5">
                         {selected.fullLetter.split("\n\n").map((para, i) => (
-                          <p key={i} className="text-sm leading-[2]" style={{ color: "rgba(255,255,255,0.55)" }}>
+                          <p key={i} className="text-sm leading-[2]" style={{ color: "#475569" }}>
                             {para}
                           </p>
                         ))}
@@ -443,7 +443,7 @@ export default function AppreciationSection() {
 
                   {/* Signature area */}
                   <div className="flex items-end justify-between pt-6"
-                    style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                    style={{ borderTop: "1px solid rgba(203,213,225,0.6)" }}>
                     <div>
                       {/* Signature placeholder */}
                       <div className="font-black text-3xl mb-1"
@@ -455,11 +455,11 @@ export default function AppreciationSection() {
                         }}>
                         {selected.name.split(" ").map(n => n[0]).join("")}
                       </div>
-                      <div className="font-bold text-sm text-white">({selected.name})</div>
+                      <div className="font-bold text-sm text-slate-900">({selected.name})</div>
                     </div>
                     <div className="text-right">
-                      <p className="text-[10px] uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,0.2)" }}>To</p>
-                      <p className="text-xs font-semibold" style={{ color: "rgba(255,255,255,0.4)" }}>{selected.to}</p>
+                      <p className="text-[10px] uppercase tracking-widest mb-1" style={{ color: "#64748b" }}>To</p>
+                      <p className="text-xs font-semibold" style={{ color: "#475569" }}>{selected.to}</p>
                     </div>
                   </div>
 

@@ -31,13 +31,12 @@ export default function Affiliation() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: "#060606" }}>
+    <section className="relative py-24 overflow-hidden" style={{ background: "#f8fafc" }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px)",
-          backgroundSize: "80px 80px",
+          backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.18) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
         }}
       />
 
@@ -65,7 +64,7 @@ export default function Affiliation() {
           </motion.div>
 
           <motion.h2
-            className="font-black text-white leading-tight mb-3"
+            className="font-black text-slate-900 leading-tight mb-3"
             style={{ fontSize: "clamp(32px, 4vw, 52px)", letterSpacing: "-0.025em" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -83,38 +82,29 @@ export default function Affiliation() {
           />
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-          className="rounded-3xl p-8 lg:p-12"
-          style={{
-            background: "linear-gradient(180deg,#f3f4f6 0%,#ececec 100%)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            boxShadow: "0 8px 40px rgba(0,0,0,0.35)",
-          }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {affiliations.map((item) => (
-              <motion.div
-                key={item.title}
-                whileHover={{ y: -3 }}
-                transition={{ duration: 0.18 }}
-                className="rounded-2xl min-h-[220px] p-6 flex flex-col items-center justify-center text-center"
-                style={{
-                  background: "rgba(255,255,255,0.86)",
-                  border: "1px solid rgba(209,213,219,0.8)",
-                  boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
-                }}
-              >
-                <div className="h-[72px] flex items-center justify-center mb-4">
-                  <img src={item.logo} alt={item.title} className="max-h-[72px] w-auto object-contain" />
-                </div>
-                <p className="text-[16px] leading-snug text-gray-700 max-w-[310px]">{item.title}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {affiliations.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              whileHover={{ y: -4, boxShadow: "0 10px 26px rgba(15,23,42,0.14)" }}
+              className="relative rounded-2xl min-h-[220px] p-6 flex flex-col items-center justify-center text-center overflow-hidden"
+              style={{
+                background: "#ffffff",
+                border: "1px solid rgba(226,232,240,1)",
+                boxShadow: "0 6px 18px rgba(15,23,42,0.08)",
+              }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg,#ef4444,transparent)" }} />
+              <div className="h-[72px] flex items-center justify-center mb-4">
+                <img src={item.logo} alt={item.title} className="max-h-[72px] w-auto object-contain" />
+              </div>
+              <p className="text-[16px] leading-snug text-gray-700 max-w-[310px]">{item.title}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

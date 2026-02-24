@@ -16,13 +16,12 @@ export default function Accreditation() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: "#060606" }}>
+    <section className="relative py-24 overflow-hidden" style={{ background: "#f8fafc" }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px)",
-          backgroundSize: "80px 80px",
+          backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.18) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
         }}
       />
 
@@ -50,7 +49,7 @@ export default function Accreditation() {
           </motion.div>
 
           <motion.h2
-            className="font-black text-white leading-tight mb-3"
+            className="font-black text-slate-900 leading-tight mb-3"
             style={{ fontSize: "clamp(32px, 4vw, 52px)", letterSpacing: "-0.025em" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
