@@ -1,0 +1,237 @@
+"use client";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+
+const courses = [
+  {
+    number: "01",
+    abbr: "BBA",
+    category: "Undergraduate",
+    title: "Bachelor of Business Administration",
+    desc: "Comprehensive management program with real-world industry exposure and case-based learning methodologies.",
+    duration: "3 Years",
+    intake: "120 Seats",
+    mode: "Full Time",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+      </svg>
+    ),
+  },
+  {
+    number: "02",
+    abbr: "MBA",
+    category: "Postgraduate",
+    title: "Master of Business Administration",
+    desc: "Advanced leadership, strategic thinking, and executive management training at its finest.",
+    duration: "2 Years",
+    intake: "60 Seats",
+    mode: "Full Time",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+      </svg>
+    ),
+  },
+  {
+    number: "03",
+    abbr: "D.Eng",
+    category: "Diploma",
+    title: "Diploma in Engineering",
+    desc: "Hands-on technical programs designed to build practical, job-ready engineering skills.",
+    duration: "3 Years",
+    intake: "80 Seats",
+    mode: "Full Time",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+    ),
+  },
+  {
+    number: "04",
+    abbr: "OCP",
+    category: "Online",
+    title: "Online Certification Programs",
+    desc: "Flexible, self-paced learning options built for working professionals on the move.",
+    duration: "6–12 Months",
+    intake: "Open",
+    mode: "Online",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    ),
+  },
+];
+
+export default function CoursesSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <section ref={ref} className="relative py-24 overflow-hidden"
+      style={{ background: "#0a0a0a" }}>
+
+      {/* Subtle grid lines */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }} />
+
+      {/* Red glow top-left */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(220,38,38,0.12) 0%, transparent 70%)", filter: "blur(40px)" }} />
+
+      {/* Red glow bottom-right */}
+      <motion.div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(220,38,38,0.08) 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
+
+      <div className="relative w-full  px-32">
+
+        {/* ── HEADER ── */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+          <div>
+            <motion.div className="flex items-center gap-3 mb-4"
+              initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.45 }}>
+              <motion.span className="h-px bg-red-600 block"
+                initial={{ width: 0 }} animate={inView ? { width: 32 } : {}} transition={{ duration: 0.5, delay: 0.1 }} />
+              <span className="text-red-500 text-xs font-black uppercase tracking-[0.25em]">Academic Programs</span>
+            </motion.div>
+
+            <motion.h2 className="font-black text-white leading-tight"
+              style={{ fontSize: "clamp(52px, 6vw, 72px)", letterSpacing: "0.02em" }}
+              initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.15 }}>
+              Our <span className="text-red-600">Courses</span> &{" "}
+              <br className="hidden md:block" />Programs
+            </motion.h2>
+          </div>
+
+          <motion.p className="text-gray-300 text-sm leading-relaxed max-w-2xl"
+            initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.28 }}>
+            Explore UGC-recognised programs crafted for real-world careers in management and engineering.
+          </motion.p>
+        </div>
+
+        {/* ── COURSE LIST ── */}
+        <div className="flex flex-col gap-0">
+          {courses.map((course, i) => (
+            <motion.div
+              key={course.abbr}
+              initial={{ opacity: 0, x: -30 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.1 + i * 0.1, ease: "easeOut" }}
+              className="group relative flex flex-col md:flex-row md:items-center gap-6 cursor-pointer"
+              style={{
+                borderTop: i === 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
+                borderBottom: "1px solid rgba(255,255,255,0.08)",
+                padding: "28px 0",
+              }}
+            >
+              {/* Hover full-row red highlight */}
+              <motion.div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl -mx-4 px-4"
+                style={{ background: "rgba(220,38,38,0.04)" }} />
+
+              {/* Left red bar on hover */}
+              <div className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-0.5 bg-red-600 transition-all duration-300 rounded-full" />
+
+              {/* ── Col 1: Number ── */}
+              <div className="flex-shrink-0 w-12">
+                <span className="font-black text-white/15 leading-none"
+                  style={{ fontSize: 40, letterSpacing: "-0.05em" }}>
+                  {course.number}
+                </span>
+              </div>
+
+              {/* ── Col 2: Icon ── */}
+              <div className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-red-500 transition-all duration-300 group-hover:bg-red-600 group-hover:text-white"
+                style={{ background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.2)" }}>
+                {course.icon}
+              </div>
+
+              {/* ── Col 3: Title + desc ── */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                  <h3 className="font-black text-white text-lg leading-tight group-hover:text-red-400 transition-colors duration-200">
+                    {course.title}
+                  </h3>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider border"
+                    style={{ color: "rgba(220,38,38,0.8)", borderColor: "rgba(220,38,38,0.25)", background: "rgba(220,38,38,0.08)" }}>
+                    {course.category}
+                  </span>
+                </div>
+                <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
+                  {course.desc}
+                </p>
+              </div>
+
+              {/* ── Col 4: Meta ── */}
+              <div className="flex-shrink-0 flex gap-6 md:gap-8">
+                <div className="text-center">
+                  <p className="text-[10px] uppercase tracking-widest text-gray-600 font-bold mb-1">Duration</p>
+                  <p className="text-white font-black text-sm whitespace-nowrap">{course.duration}</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-[10px] uppercase tracking-widest text-gray-600 font-bold mb-1">Intake</p>
+                  <p className="text-white font-black text-sm">{course.intake}</p>
+                </div>
+                <div className="text-center hidden lg:block">
+                  <p className="text-[10px] uppercase tracking-widest text-gray-600 font-bold mb-1">Mode</p>
+                  <p className="text-white font-black text-sm">{course.mode}</p>
+                </div>
+              </div>
+
+              {/* ── Col 5: CTA arrow ── */}
+              <div className="flex-shrink-0">
+                <motion.div
+                  className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-gray-600 group-hover:border-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.08 }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M7 7h10v10"/>
+                  </svg>
+                </motion.div>
+              </div>
+
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── BOTTOM — CTA + Stats ── */}
+        <motion.div
+          className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6"
+          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, delay: 0.65 }}
+        >
+          {/* Stats row */}
+          <div className="flex items-center gap-8">
+            {[
+              { value: "40+", label: "Programs" },
+              { value: "900+", label: "Students" },
+              { value: "UGC", label: "Recognised" },
+            ].map((s, si) => (
+              <div key={si} className="text-center">
+                <div className="font-black text-red-500 text-xl leading-none">{s.value}</div>
+                <div className="text-gray-600 text-[10px] uppercase tracking-widest mt-1">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Enroll CTA */}
+          <motion.a href="#"
+            whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-3 px-9 py-4 rounded-xl font-black text-sm uppercase tracking-wider text-white"
+            style={{ background: "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)", boxShadow: "0 8px 32px rgba(220,38,38,0.35)" }}>
+            Explore All Programs
+            <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.4, repeat: Infinity }}>→</motion.span>
+          </motion.a>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
