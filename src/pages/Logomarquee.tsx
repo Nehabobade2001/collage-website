@@ -46,7 +46,7 @@ export default function LogoMarquee({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden py-10"
+      className="relative w-full overflow-hidden py-10 md:py-32"
       style={{ background: "#fff" }}
     >
       {/* Subtle dot grid */}
@@ -89,8 +89,8 @@ export default function LogoMarquee({
           </motion.div>
 
           <motion.h2
-            className="font-black text-gray-900 leading-tight mb-3"
-            style={{ fontSize: "clamp(26px, 3.5vw, 42px)", letterSpacing: "-0.02em" }}
+            className="font-black text-gray-900 leading-tight mb-3 text-4xl sm:text-5xl md:text-7xl"
+            style={{ letterSpacing: "-0.02em" }}
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.18 }}
@@ -153,7 +153,7 @@ export default function LogoMarquee({
         {allLogos.map((logo, index) => (
           <div key={index} className="flex-shrink-0 flex items-center justify-center">
             <div
-              className="relative px-6 py-3 transition-all duration-300"
+              className="relative px-6 py-3  transition-all duration-300"
               style={{
                 /* Default state ab original color mein rahegi */
                 filter: "grayscale(0%)", 
@@ -165,7 +165,7 @@ export default function LogoMarquee({
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="h-12 md:h-32 w-auto object-contain"
+                className="h-20 md:h-32 w-auto object-contain"
                 draggable={false}
               />
                   {/* Pause hint */}
@@ -255,3 +255,4 @@ export default function LogoMarquee({
     </section>
   );
 }
+

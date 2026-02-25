@@ -3,6 +3,7 @@
 import { FormEvent, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import AboutPageBanner from "./AboutPageBanner";
 
 type EnquiryForm = {
   name: string;
@@ -34,7 +35,9 @@ export default function ContactUs() {
   };
 
   return (
-    <section ref={ref} className="relative py-24 overflow-hidden" style={{ background: "#f8fafc" }}>
+    <>
+    <AboutPageBanner title="CONTACT US" breadcrumbLabel="Contact Us" />
+    <section ref={ref} className="relative pt-8 sm:pt-10 md:pt-12 lg:pt-14 pb-12 sm:pb-16 md:pb-20 lg:pb-24 overflow-hidden" style={{ background: "#f8fafc" }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -77,9 +80,7 @@ export default function ContactUs() {
           </motion.div>
 
           <motion.h2
-            className="font-black text-slate-900 leading-tight mb-3"
-            font-light leading-tight mb-1 text-slate-700
-            style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
+            className="font-black font-black text-gray-900 leading-tight text-4xl sm:text-5xl md:text-7xl mb-4 text-slate-900 leading-tight mb-3"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.15 }}
@@ -253,5 +254,6 @@ Plot No. 28/7, Kapashera, Near Police
         </div>
       </div>
     </section>
+    </>
   );
 }

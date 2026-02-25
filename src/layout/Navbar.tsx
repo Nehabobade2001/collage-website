@@ -5,7 +5,7 @@ import {
   Phone, Mail, User, GraduationCap, ChevronDown,
   Menu, X, Trophy, ArrowRight, Zap
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "#", hasDropdown: true },
@@ -59,6 +59,8 @@ const badges = [
 ];
 
 export default function Navbar() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -77,6 +79,51 @@ export default function Navbar() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  useEffect(() => {
+    const path = location.pathname.toLowerCase();
+    if (path === "/" || path === "") {
+      setActiveItem("Home");
+      return;
+    }
+    if (path.startsWith("/about") || path.startsWith("/contact") || path.startsWith("/appreaciations")) {
+      setActiveItem("About");
+      return;
+    }
+    if (path.startsWith("/alliance")) {
+      setActiveItem("Alliance");
+      return;
+    }
+    if (path.startsWith("/courses")) {
+      setActiveItem("Courses");
+      return;
+    }
+    if (path.startsWith("/specialization")) {
+      setActiveItem("Specialization");
+      return;
+    }
+    if (path.startsWith("/exam")) {
+      setActiveItem("Exam");
+      return;
+    }
+    if (path.startsWith("/policies")) {
+      setActiveItem("Policies");
+      return;
+    }
+    if (path.startsWith("/download")) {
+      setActiveItem("Download");
+      return;
+    }
+    if (path.startsWith("/career")) {
+      setActiveItem("Career");
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    setMobileOpen(false);
+    setMobileExpanded(null);
+    setActiveDropdown(null);
+  }, [location.pathname]);
 
 const getDropdown = (l: string) => {
   if (l === "Courses") return courseDropdown;
@@ -103,7 +150,7 @@ const getDropdown = (l: string) => {
       </div>
 
       {/* ── FLOATING GLASS NAVBAR ── */}
-      <div className="sticky top-0 rounded-2xl z-50 w-full"
+      <div className="sticky top-0 rounded-2xl z-50  w-full"
         >
 
         <motion.div
@@ -129,22 +176,19 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
             }} />
 
           {/* Red top glow line */}
-          <div className="absolute top-0 left-8 right-8 h-px rounded-full"
+          <div className="absolute top-0 left-6 right-8 h-px rounded-full"
             style={{ background: "linear-gradient(90deg,transparent,rgba(220,38,38,0.6),transparent)" }} />
 
-          <div className="relative flex items-center px-5 py-3 gap-4">
+          <div className="relative flex items-center px-5 py-2 gap-4">
 
-            {/* ── LOGO ── */}
       {/* ── LOGO ── */}
-<motion.a
-  href="#"
-  className="flex items-center gap-3 flex-shrink-0"
-  whileHover={{ scale: 1.02 }}
-  transition={{ duration: 0.15 }}
+<Link
+  to="/"
+  className="flex items-center gap-3 flex-shrink-0 transition-transform duration-150 hover:scale-[1.02]"
 >
 
   {/* Logo Image */}
-  <div className="w-20 h-20 flex-shrink-0">
+  <div className="w-28 h-28 flex-shrink-0">
     <img
       src="/aiimes-logo.png"
       alt="AIIMES Logo"
@@ -153,22 +197,22 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
   </div>
 
   {/* Logo Text */}
-  <div className="hidden sm:block">
-    <div className="font-black text-[15px] leading-none tracking-tight text-white">
+  <div className="block">
+    <div className="font-black text-[20px] sm:text-[36px] leading-none tracking-tight text-white">
       AIIMES
     </div>
-    <div className="text-[8px] font-bold uppercase tracking-[0.22em] text-gray-400 mt-0.5">
+    <div className="text-[7px] sm:text-[8px] font-bold uppercase tracking-[0.22em] text-gray-300 mt-0.5">
       Govt. of India Regd.
     </div>
   </div>
 
-</motion.a>
+</Link>
             {/* Divider */}
             <div className="hidden lg:block w-px h-6 flex-shrink-0"
               style={{ background: "rgba(255,255,255,0.08)" }} />
 
             {/* ── DESKTOP NAV ── */}
-            <nav className="hidden lg:flex items-center gap-0.5 flex-1">
+            <nav className="hidden lg:flex items-center justify-center gap-0.5 flex-1">
               {navItems.map((item) => (
                 <div key={item.label} className="relative"
                   onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.label)}
@@ -176,14 +220,14 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
 
 <Link
   to={item.href}                    onClick={() => setActiveItem(item.label)}
-                    className="relative flex items-center gap-1 px-3 py-1.5 rounded-xl text-[12px] font-bold transition-colors duration-150 group"
+                    className="relative  flex items-center gap-1 px-4 py-2 rounded-xl text-[15px] font-bold duration-150 group"
                     style={{ color: "#ffffff" }}
                     whileHover={{ color: "#fff" }}>
 
                     {/* Animated glass pill for active */}
                     {activeItem === item.label && (
                       <motion.span layoutId="glass-nav-pill"
-                        className="absolute inset-0 rounded-xl"
+                        className="absolute inset-x-0.5 inset-y-1 rounded-lg"
                         style={{
                           background: "rgba(220,38,38,0.15)",
                           border: "1px solid rgba(220,38,38,0.35)",
@@ -271,12 +315,12 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
                 ].map((item, i) => (
                   <motion.button key={item.label}
                     whileHover={{ backgroundColor: "rgba(220,38,38,0.14)", color: "#fff" }}
-                    className="flex items-center gap-1.5 px-3 py-2 text-[10px] font-bold transition-all duration-120"
+                    className="flex items-center gap-2 px-3.5 py-2.5 text-[12px] font-bold transition-all duration-120"
                     style={{
   color: "#ffffff",
                       borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none",
                     }}>
-                    <span className="text-red-400">{item.icon}</span>
+                    <span className="text-red-400 [&>svg]:w-3 [&>svg]:h-3">{item.icon}</span>
                     {item.label}
                   </motion.button>
                 ))}
@@ -360,16 +404,16 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
               <div className="flex items-center justify-between px-5 py-4"
                 style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                 <div className="flex items-center gap-3">
-                  <div className="relative w-9 h-9 rounded-xl overflow-hidden"
+                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center"
                     style={{ border: "1px solid rgba(220,38,38,0.3)", boxShadow: "0 0 12px rgba(220,38,38,0.15)" }}>
-                    <div className="absolute inset-0 bg-black" />
-                    <div className="absolute bottom-0 left-0 right-0 h-[45%]" style={{ background: "#dc2626" }} />
-                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                      <span className="text-white font-black text-xs">AI</span>
-                    </div>
+                    <img
+                      src="/aiimes-logo.png"
+                      alt="AIIMES Logo"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
-                    <div className="font-black text-[15px] text-white tracking-tight">AII<span className="text-red-500">MES</span></div>
+                    <div className="font-black text-[15px] text-white tracking-tight">AIIMES</div>
                     <div className="text-[8px] uppercase tracking-[0.2em]" style={{ color: "rgba(255,255,255,0.2)" }}>Govt. of India Regd.</div>
                   </div>
                 </div>
@@ -400,7 +444,11 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
                     <button
                       onClick={() => {
                         if (item.hasDropdown) setMobileExpanded(p => p === item.label ? null : item.label);
-                        else { setActiveItem(item.label); setMobileOpen(false); }
+                        else {
+                          setActiveItem(item.label);
+                          setMobileOpen(false);
+                          if (item.href && item.href !== "#") navigate(item.href);
+                        }
                       }}
                       className="w-full flex items-center justify-between px-5 py-3.5 text-[13px] font-bold transition-all"
                       style={{
@@ -423,6 +471,11 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
                           style={{ background: "rgba(255,255,255,0.018)", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
                           {getDropdown(item.label).map(sub => (
                             <Link key={sub.label} to={sub.href || "/about"}
+                              onClick={() => {
+                                setActiveItem(item.label);
+                                setMobileOpen(false);
+                                setMobileExpanded(null);
+                              }}
                               className="flex items-center gap-3 px-8 py-2.5 text-[12px] font-medium hover:text-red-400 transition-colors"
                               style={{ color: "rgba(255,255,255,0.28)" }}>
                               <span>{sub.icon}</span>{sub.label}

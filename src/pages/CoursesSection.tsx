@@ -74,7 +74,7 @@ export default function CoursesSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section ref={ref} className="relative py-24 overflow-hidden"
+    <section ref={ref} className="relative py-16 md:py-24 overflow-hidden"
       style={{ background: "#0a0a0a" }}>
 
       {/* Animated grid lines */}
@@ -130,7 +130,7 @@ export default function CoursesSection() {
         animate={{ rotate: -360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
 
-      <div className="relative w-full  px-32">
+      <div className="relative w-full px-4 sm:px-6 lg:px-12 xl:px-20">
 
         {/* ── HEADER ── */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
@@ -142,8 +142,8 @@ export default function CoursesSection() {
               <span className="text-red-500 text-xs font-black uppercase tracking-[0.25em]">Academic Programs</span>
             </motion.div>
 
-            <motion.h2 className="font-black text-white leading-tight"
-              style={{ fontSize: "clamp(52px, 6vw, 72px)", letterSpacing: "0.02em" }}
+            <motion.h2 className="font-black text-white leading-tight text-4xl sm:text-5xl md:text-7xl"
+              style={{ letterSpacing: "-0.025em" }}
               initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.15 }}>
               Our <span className="text-red-600">Courses</span> &{" "}
@@ -151,7 +151,7 @@ export default function CoursesSection() {
             </motion.h2>
           </div>
 
-          <motion.p className="text-gray-300 text-sm leading-relaxed max-w-2xl"
+          <motion.p className="text-gray-300 md:text-[20px] text-sm leading-relaxed max-w-2xl"
             initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.28 }}>
             Explore UGC-recognised programs crafted for real-world careers in management and engineering.
@@ -166,11 +166,10 @@ export default function CoursesSection() {
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.1 + i * 0.1, ease: "easeOut" }}
-              className="group relative flex flex-col md:flex-row md:items-center gap-6 cursor-pointer"
+              className="group relative flex flex-col md:flex-row items-center gap-4 md:gap-6 cursor-pointer py-5 md:py-7 text-center md:text-left"
               style={{
                 borderTop: i === 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
                 borderBottom: "1px solid rgba(255,255,255,0.08)",
-                padding: "28px 0",
               }}
             >
               {/* Hover full-row red highlight */}
@@ -181,15 +180,15 @@ export default function CoursesSection() {
               <div className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-0.5 bg-red-600 transition-all duration-300 rounded-full" />
 
               {/* ── Col 1: Number ── */}
-              <div className="flex-shrink-0 w-12">
+              <div className="flex-shrink-0 w-full md:w-12 flex justify-center md:justify-start">
                 <span className="font-black text-white/15 leading-none"
-                  style={{ fontSize: 40, letterSpacing: "-0.05em" }}>
+                  style={{ fontSize: "clamp(30px, 6vw, 40px)", letterSpacing: "-0.05em" }}>
                   {course.number}
                 </span>
               </div>
 
               {/* ── Col 2: Image + Icon ── */}
-              <div className="relative flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform duration-300">
+              <div className="relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform duration-300">
                 <img 
                   src={course.image} 
                   alt={course.title}
@@ -203,8 +202,8 @@ export default function CoursesSection() {
               </div>
 
               {/* ── Col 3: Title + desc ── */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+              <div className="flex-1 min-w-0 text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-3 mb-1.5 flex-wrap">
                   <h3 className="font-black text-white text-lg leading-tight group-hover:text-red-400 transition-colors duration-200">
                     {course.title}
                   </h3>
@@ -213,13 +212,13 @@ export default function CoursesSection() {
                     {course.category}
                   </span>
                 </div>
-                <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
+                <p className="text-gray-500 text-sm leading-relaxed max-w-xl mx-auto md:mx-0">
                   {course.desc}
                 </p>
               </div>
 
               {/* ── Col 4: Meta ── */}
-              <div className="flex-shrink-0 flex gap-6 md:gap-8">
+              <div className="flex-shrink-0 flex flex-wrap justify-center gap-5 md:gap-8 w-full md:w-auto">
                 <div className="text-center">
                   <p className="text-[10px] uppercase tracking-widest text-gray-600 font-bold mb-1">Duration</p>
                   <p className="text-white font-black text-sm whitespace-nowrap">{course.duration}</p>
@@ -235,7 +234,7 @@ export default function CoursesSection() {
               </div>
 
               {/* ── Col 5: CTA arrow ── */}
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 self-center md:self-auto">
                 <motion.div
                   className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-gray-600 group-hover:border-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300"
                   whileHover={{ scale: 1.08 }}
@@ -252,12 +251,12 @@ export default function CoursesSection() {
 
         {/* ── BOTTOM — CTA + Stats ── */}
         <motion.div
-          className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6"
+          className="mt-14 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6"
           initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.65 }}
         >
           {/* Stats row */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6 sm:gap-8 flex-wrap justify-center">
             {[
               { value: "40+", label: "Programs" },
               { value: "900+", label: "Students" },
@@ -284,3 +283,4 @@ export default function CoursesSection() {
     </section>
   );
 }
+

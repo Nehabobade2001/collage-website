@@ -107,7 +107,7 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full px-x xl:px-12 md:px-12 lg:px-20 py-24 md:py-10 md:mb-20  overflow-hidden"
+      className="relative w-full px-x xl:px-12 md:px-12 lg:px-20 py-24 md:py-32 md:mb-20  overflow-hidden"
     >
       {/* BG */}
       <motion.div className="absolute rounded-full pointer-events-none"
@@ -143,7 +143,7 @@ export default function TestimonialsSection() {
               animate={inView ? { width: 32, opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.15 }} />
           </div>
-          <motion.h2 className="text-4xl md:text-5xl font-bold text-gray-900"
+          <motion.h2 className="font-black text-gray-900 leading-tight text-4xl sm:text-5xl md:text-7xl"
             initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.28 }}>
             What Our <span className="text-red-600">Students</span> Say
@@ -349,3 +349,4 @@ export default function TestimonialsSection() {
     </section>
   );
 }
+

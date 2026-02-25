@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import AboutPageBanner from "../about/AboutPageBanner";
 
 export default function Accreditation() {
   const leftPoints = [
@@ -16,7 +17,9 @@ export default function Accreditation() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: "#f8fafc" }}>
+    <>
+    <AboutPageBanner title="ACCREDITATION" breadcrumbLabel="Accreditation" />
+    <section className="relative pt-8 sm:pt-10 md:pt-12 lg:pt-14 pb-12 sm:pb-14 md:pb-16 overflow-hidden" style={{ background: "#f8fafc" }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -26,44 +29,23 @@ export default function Accreditation() {
       />
 
       <div className="relative w-full px-6 lg:px-20">
-        <div className="text-center mb-14">
-          <motion.div
-            className="flex items-center justify-center gap-3 mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            <motion.span
-              className="h-px bg-red-600"
-              initial={{ width: 0 }}
-              animate={{ width: 32 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            />
-            <span className="text-red-500 text-[10px] font-black uppercase tracking-[0.28em]">Alliance</span>
-            <motion.span
-              className="h-px bg-red-600"
-              initial={{ width: 0 }}
-              animate={{ width: 32 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            />
-          </motion.div>
-
+        <div className="text-center mb-10">
           <motion.h2
-            className="font-black text-slate-900 leading-tight mb-3"
-            style={{ fontSize: "clamp(32px, 4vw, 52px)", letterSpacing: "-0.025em" }}
+            className="leading-tight font-black text-gray-900 leading-tight text-4xl sm:text-5xl md:text-7xl mb-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Accredit<span style={{ color: "#ef4444" }}>ation</span>
+            Official <span className="text-red-500">            Accreditation
+</span>
           </motion.h2>
-
+         
           <motion.div
-            className="h-px mx-auto mt-5"
-            style={{ width: 48, background: "linear-gradient(90deg,transparent,#dc2626,transparent)" }}
+            className="h-px mx-auto"
+            style={{ width: 72, background: "linear-gradient(90deg,transparent,#dc2626,transparent)" }}
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.45, delay: 0.22 }}
           />
         </div>
 
@@ -109,5 +91,6 @@ export default function Accreditation() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }
