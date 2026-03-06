@@ -399,7 +399,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Award, ExternalLink } from "lucide-react";
+import { Award } from "lucide-react";
 import AboutPageBanner from "../about/AboutPageBanner";
 
 export default function Affiliation() {

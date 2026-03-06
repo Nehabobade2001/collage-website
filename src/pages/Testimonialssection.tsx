@@ -96,8 +96,8 @@ export default function TestimonialsSection() {
 
   const slideVariants = {
     enter: (dir: number) => ({ x: dir > 0 ? 60 : -60, opacity: 0, scale: 0.97 }),
-    center: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] } },
-    exit: (dir: number) => ({ x: dir > 0 ? -60 : 60, opacity: 0, scale: 0.97, transition: { duration: 0.3, ease: "easeIn" } }),
+    center: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.45 } },
+    exit: (dir: number) => ({ x: dir > 0 ? -60 : 60, opacity: 0, scale: 0.97, transition: { duration: 0.3 } }),
   };
 
   const t = testimonials[current];

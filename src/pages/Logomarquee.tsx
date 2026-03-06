@@ -155,12 +155,9 @@ export default function LogoMarquee({
             <div
               className="relative px-6 py-3  transition-all duration-300"
               style={{
-                /* Default state ab original color mein rahegi */
                 filter: "grayscale(0%)", 
                 opacity: 1,
               }}
-              /* Hover effect optional hai, aap ise hata bhi sakte hain */
-              whileHover={{ scale: 1.1 }} 
             >
               <img
                 src={logo.src}

@@ -29,23 +29,23 @@ const allianceDropdown = [
   { label: "Appreciation", href: "/alliance/appreciation", icon: "🏆" },
 ];
 const courseDropdown = [
-  { label: "Engineering", icon: "⚙️" },
-  { label: "Business Management", icon: "📊" },
-  { label: "Hotel Management", icon: "🏨" },
-  { label: "Structural Engineering", icon: "🏗️" },
-  { label: "Interior Designing", icon: "🎨" },
-  { label: "Aviation Management", icon: "✈️" },
-  { label: "Mass Communication", icon: "📡" },
-  { label: "Library Science", icon: "📚" },
+  { label: "Engineering", href: "/courses/engineering", icon: "⚙️" },
+  { label: "Business Management", href: "/courses/business", icon: "📊" },
+  { label: "Hotel Management", href: "/courses/hotel", icon: "🏨" },
+  { label: "Structural Engineering", href: "/courses/structural", icon: "🏗️" },
+  { label: "Interior Designing", href: "/courses/interior", icon: "🎨" },
+  { label: "Aviation Management", href: "/courses/aviation", icon: "✈️" },
+  { label: "Mass Communication", href: "/courses/mass-comm", icon: "📡" },
+  { label: "Library Science", href: "/courses/library", icon: "📚" },
 ];
 
 const specDropdown = [
-  { label: "Management", icon: "💼" },
-  { label: "Engineering", icon: "⚙️" },
-  { label: "Architecture", icon: "🏛️" },
-  { label: "Agriculture", icon: "🌾" },
-  { label: "Computer Application", icon: "💻" },
-  { label: "Software Technology", icon: "🖥️" },
+  { label: "Management", href: "/specialization/management", icon: "💼" },
+  { label: "Engineering", href: "/specialization/engineering", icon: "⚙️" },
+  { label: "Architecture", href: "/specialization/architecture", icon: "🏛️" },
+  { label: "Agriculture", href: "/specialization/agriculture", icon: "🌾" },
+  { label: "Computer Application", href: "/specialization/computer", icon: "💻" },
+  { label: "Software Technology", href: "/specialization/software", icon: "🖥️" },
 ];
 
 const badges = [
@@ -218,11 +218,11 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
                   onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.label)}
                   onMouseLeave={() => setActiveDropdown(null)}>
 
-<Link
-  to={item.href}                    onClick={() => setActiveItem(item.label)}
-                    className="relative  flex items-center gap-1 px-4 py-2 rounded-xl text-[15px] font-bold duration-150 group"
-                    style={{ color: "#ffffff" }}
-                    whileHover={{ color: "#fff" }}>
+                  <Link
+                    to={item.href}
+                    onClick={() => setActiveItem(item.label)}
+                    className="relative flex items-center gap-1 px-4 py-2 rounded-xl text-[15px] font-bold duration-150 group"
+                    style={{ color: "#ffffff" }}>
 
                     {/* Animated glass pill for active */}
                     {activeItem === item.label && (
@@ -249,7 +249,7 @@ background: "linear-gradient(to bottom, #1a1a1a, #121212)",
                         <ChevronDown size={10} />
                       </motion.span>
                     )}
-   </Link>
+                  </Link>
                   {/* Glass Dropdown */}
                   {item.hasDropdown && (
                     <AnimatePresence>

@@ -87,7 +87,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { ChevronRight, CheckCircle, Users } from "lucide-react";
+import { ChevronRight, CheckCircle } from "lucide-react";
 import { useRef } from "react";
 import AboutPageBanner from "../about/AboutPageBanner";
 
@@ -129,9 +129,7 @@ const registrations = [
 
 export default function Registration() {
   const sec1 = useRef(null);
-  const sec2 = useRef(null);
   const inView1 = useInView(sec1, { once: true, margin: "-60px" });
-  const inView2 = useInView(sec2, { once: true, margin: "-60px" });
 
   return (
     <>

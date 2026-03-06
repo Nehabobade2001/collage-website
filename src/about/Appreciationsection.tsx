@@ -612,7 +612,7 @@ const appreciations = [
 export default function AppreciationSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<typeof appreciations[0] | null>(null);
   const [page, setPage] = useState(0);
   const perPage = 4;
   const totalPages = Math.ceil(appreciations.length / perPage);

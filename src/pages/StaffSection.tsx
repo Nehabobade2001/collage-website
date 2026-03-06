@@ -336,7 +336,7 @@ const socials = [
   },
 ];
 
-function StaffCard({ member, index, inView }) {
+function StaffCard({ member, index, inView }: { member: typeof staff[0]; index: number; inView: boolean }) {
   const [hovered, setHovered] = useState(false);
 
   return (

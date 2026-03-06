@@ -1209,9 +1209,6 @@ export default function HeroSection() {
     return () => clearInterval(timer);
   }, [isAutoPlay, currentSlide]);
 
-  const nextSlide = () => { setCurrentSlide((prev) => (prev + 1) % slides.length); setIsAutoPlay(false); };
-  const prevSlide = () => { setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length); setIsAutoPlay(false); };
-
   const slide = slides[currentSlide];
 
   return (
